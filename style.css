@@ -1,7 +1,7 @@
 /* تنسيقات عامة */
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f5f7fa;
+    background-color: #f3f4f6;
     color: #333;
     margin: 0;
     display: flex;
@@ -14,53 +14,70 @@ body {
 
 /* الصفحة الرئيسية */
 .container {
-    background-color: #adadad;
-    padding: 4vw;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 100vw; /* تعديل العرض ليكون 100% من عرض الشاشة */
-    max-width: none; /* إلغاء الحد الأقصى للعرض لتجنب الفراغات */
+    background-color: #ffffff;
+    padding: 3vw;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    width: 90vw;
+    max-width: 1600px; /* عرض محدد مناسب للشاشات الكبيرة */
 }
 
-/* تكبير حجم الرسالة */
+/* الرسالة المتحركة */
 .message-container {
-    padding: 2vw;
-    margin-bottom: 3vw;
+    padding: 1vw;
+    background-color: #3498db;
+    border-radius: 8px;
+    margin-bottom: 2vw;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .animated-message {
-    font-size: 4vw; /* تكبير حجم الخط للرسالة */
+    font-size: 3vw;
     color: #f7faf7;
     white-space: nowrap;
-    animation: slideRight 30s linear infinite;
+    animation: slideRight 20s linear infinite;
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 h2 {
-    font-size: 4vw; /* تكبير حجم الخط للعناوين */
-    color: #e21919;
+    font-size: 3vw;
+    color: #333;
     margin-bottom: 2vw;
+    font-weight: 700;
 }
 
-/* تكبير حجم العناصر الأخرى */
+/* تنسيقات جدول المعلومات */
 .info-table {
     width: 100%;
-    margin: 2vw 0;
+    margin: 3vw 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
 }
 
 .info-row {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 2vw;
+    gap: 2vw;
 }
 
 .info-box {
     flex: 1;
-    padding: 2.5vw;
+    padding: 2vw;
     background-color: #ecf0f1;
-    border-radius: 8px;
-    margin: 0 1vw;
-    font-size: 3vw; /* تكبير حجم الخط لمربعات المعلومات */
+    border-radius: 10px;
+    font-size: 2.5vw;
+    font-weight: bold;
     text-align: center;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .highlight {
@@ -68,47 +85,45 @@ h2 {
     color: #fff;
 }
 
-.info-box span {
-    display: block;
+/* تصميم التاريخ الهجري والأيام المتبقية */
+.time-row {
+    font-size: 2.8vw;
+    padding: 1.5vw;
+    color: #333;
+    background-color: #f39c12;
+    border-radius: 10px;
     font-weight: bold;
+    text-align: center;
+    margin-top: 2vw;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* تكبير حجم الساعة الرقمية */
+.remaining-days {
+    background-color: #e74c3c;
+    color: #fff;
+    font-weight: bold;
+    padding: 1vw 2vw;
+    border-radius: 8px;
+    font-size: 2.5vw;
+    margin-top: 1vw;
+}
+
+/* تنسيقات الساعة الرقمية */
 .digital-clock {
-    font-size: 8vw; /* تكبير حجم الخط للساعة الرقمية */
+    font-size: 6vw;
     font-weight: bold;
     color: #2c3e50;
     margin-top: 3vw;
     background-color: #ecf0f1;
-    padding: 3vw;
+    padding: 1.5vw 3vw;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* تكبير حجم الـ footer */
+/* تصميم عصري للقسم السفلي */
 .footer-control {
-    font-size: 3vw; /* تكبير حجم الخط في القسم السفلي */
+    font-size: 3vw;
     color: #7f8c8d;
     margin-top: 2vw;
     font-weight: bold;
-}
-
-/* تنسيق متجاوب للشاشات الكبيرة */
-@media (min-width: 2560px) {
-    .animated-message {
-        font-size: 5vw;
-    }
-    h2 {
-        font-size: 5vw;
-    }
-    .info-box {
-        font-size: 4vw;
-    }
-    .digital-clock {
-        font-size: 10vw;
-        padding: 4vw;
-    }
-    .footer-control {
-        font-size: 4vw;
-    }
 }
