@@ -9,37 +9,38 @@ body {
     align-items: center;
     height: 100vh;
     text-align: center;
+    overflow: hidden;
 }
 
 /* صفحة البداية */
 .start-page {
     background-color: #ffffff;
-    padding: 40px;
+    padding: 4vw;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     max-width: 700px;
-    width: 80%;
+    width: 80vw;
 }
 
 .start-page h1 {
-    font-size: 3em;
+    font-size: 3vw;
     color: #3498db;
-    margin-bottom: 20px;
+    margin-bottom: 2vw;
 }
 
 .start-page input,
 .start-page select {
     width: 100%;
-    padding: 15px;
-    margin-bottom: 20px;
-    font-size: 1.5em;
+    padding: 1.5vw;
+    margin-bottom: 2vw;
+    font-size: 1.5vw;
     border: 1px solid #ddd;
     border-radius: 6px;
 }
 
 .start-page button {
-    font-size: 1.8em;
-    padding: 15px 30px;
+    font-size: 1.8vw;
+    padding: 1.5vw 3vw;
     background-color: #3498db;
     color: #fff;
     border: none;
@@ -55,11 +56,11 @@ body {
 /* الصفحة الرئيسية */
 .container {
     background-color: #adadad;
-    padding: 50px;
+    padding: 4vw;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-width: 2600px;
-    width: 100%;
+    width: 95vw;
+    max-width: 1200px;
 }
 
 /* الرسالة المتحركة */
@@ -69,12 +70,12 @@ body {
     overflow: hidden;
     border: 4px solid #3498db;
     border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
+    padding: 2vw;
+    margin-bottom: 3vw;
 }
 
 .animated-message {
-    font-size: 3em;
+    font-size: 3vw;
     color: #f7faf7;
     white-space: nowrap;
     animation: slideRight 30s linear infinite;
@@ -90,30 +91,30 @@ body {
 }
 
 h2 {
-    font-size: 3em;
+    font-size: 3vw;
     color: #e21919;
-    margin-bottom: 30px;
+    margin-bottom: 3vw;
 }
 
 /* تنسيقات جدول المعلومات */
 .info-table {
     width: 100%;
-    margin: 30px 0;
+    margin: 3vw 0;
 }
 
 .info-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 2vw;
 }
 
 .info-box {
     flex: 1;
-    padding: 25px;
+    padding: 2.5vw;
     background-color: #ecf0f1;
     border-radius: 8px;
-    margin: 0 10px;
-    font-size: 1.8em;
+    margin: 0 1vw;
+    font-size: 1.8vw;
     text-align: center;
 }
 
@@ -125,17 +126,17 @@ h2 {
 .info-box span {
     display: block;
     font-weight: bold;
-    font-size: 1.8em;
+    font-size: 1.8vw;
 }
 
 /* تنسيق التاريخ الهجري */
 .time-row {
-    font-size: 3em;
-    padding: 20px;
+    font-size: 3vw;
+    padding: 2vw;
     color: #2c3e50;
     background-color: #f39c12;
     border-radius: 10px;
-    margin-top: 20px;
+    margin-top: 2vw;
     font-weight: bold;
     text-align: center;
     direction: rtl;
@@ -147,29 +148,69 @@ h2 {
     background-color: #e74c3c;
     color: #fff;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 1vw 2vw;
     border-radius: 8px;
-    margin-top: 10px;
+    margin-top: 1vw;
     direction: rtl;
-    font-size: 1.5em;
+    font-size: 1.5vw;
 }
 
 /* تنسيقات الساعة الرقمية */
 .digital-clock {
-    font-size: 6em;
+    font-size: 6vw;
     font-weight: bold;
     color: #2c3e50;
-    margin-top: 30px;
+    margin-top: 3vw;
     background-color: #ecf0f1;
-    padding: 30px 60px;
+    padding: 3vw 6vw;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* تنسيقات كنترول */
 .footer-control {
-    font-size: 2.5em;
+    font-size: 2.5vw;
     color: #7f8c8d;
-    margin-top: 20px;
+    margin-top: 2vw;
     font-weight: bold;
+}
+
+/* تنسيقات للأحجام الصغيرة */
+@media (max-width: 768px) {
+    .start-page h1, h2 {
+        font-size: 4vw;
+    }
+    .info-box {
+        font-size: 2vw;
+        padding: 2vw;
+    }
+    .digital-clock {
+        font-size: 5vw;
+        padding: 2vw;
+    }
+    .remaining-days, .time-row {
+        font-size: 2vw;
+    }
+    .footer-control {
+        font-size: 3vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .info-row {
+        flex-direction: column;
+    }
+    .info-box {
+        margin: 2vw 0;
+    }
+    .digital-clock {
+        font-size: 4vw;
+    }
+    .message-container {
+        padding: 1vw;
+    }
+    .start-page input,
+    .start-page select {
+        font-size: 2vw;
+    }
 }
