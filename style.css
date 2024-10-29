@@ -14,26 +14,24 @@ body {
 
 /* الصفحة الرئيسية */
 .container {
-    background-color: #ffffff;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: 2vw;
     padding: 2vw;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    width: 95vw;
-    max-width: 1600px; /* عرض أكبر لضمان وضوح العناصر */
+    width: 100vw;
+    max-width: 1600px;
 }
 
 /* الرسالة المتحركة */
 .message-container {
-    padding: 1vw;
+    grid-row: 1;
     background-color: #3498db;
+    color: #fff;
+    padding: 1vw;
     border-radius: 8px;
-    margin-bottom: 2vw;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    font-size: 4vw; /* تكبير حجم الخط للرسالة المتحركة */
-    color: #f7faf7;
-    white-space: nowrap;
-    animation: slideRight 20s linear infinite;
+    font-size: 2vw;
     text-align: center;
+    animation: slideRight 20s linear infinite;
 }
 
 @keyframes slideRight {
@@ -45,74 +43,32 @@ body {
     }
 }
 
-h2 {
-    font-size: 3.5vw;
-    color: #333;
-    margin-bottom: 2vw;
-    font-weight: 700;
-}
-
 /* تنسيقات جدول المعلومات */
 .info-table {
-    width: 100%;
-    margin: 3vw 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2vw;
+    margin-top: 2vw;
 }
 
 .info-box {
-    width: 30%; /* استخدام نسبة لضمان تساوي الأحجام */
-    padding: 2vw;
     background-color: #3498db;
-    border-radius: 10px;
-    font-size: 3vw; /* تكبير الخط */
-    font-weight: bold;
     color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-/* تنسيق التاريخ الهجري والأيام المتبقية */
-.time-row {
-    font-size: 3vw;
-    padding: 1.5vw;
-    color: #333;
-    background-color: #f39c12;
+    padding: 2vw;
     border-radius: 10px;
+    font-size: 2vw;
     font-weight: bold;
     text-align: center;
-    margin-top: 2vw;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-.remaining-days {
-    background-color: #e74c3c;
-    color: #fff;
-    font-weight: bold;
-    padding: 1vw 2vw;
-    border-radius: 8px;
-    font-size: 2.8vw; /* تكبير الخط */
-    margin-top: 1vw;
 }
 
 /* تنسيقات الساعة الرقمية */
 .digital-clock {
-    font-size: 7vw; /* تكبير الخط للساعة */
+    font-size: 5vw;
     font-weight: bold;
     color: #2c3e50;
-    margin-top: 3vw;
     background-color: #ecf0f1;
     padding: 2vw;
     border-radius: 10px;
+    text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* تصميم عصري للقسم السفلي */
-.footer-control {
-    font-size: 3vw;
-    color: #7f8c8d;
-    margin-top: 2vw;
-    font-weight: bold;
 }
