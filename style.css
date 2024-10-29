@@ -12,47 +12,6 @@ body {
     overflow: hidden;
 }
 
-/* صفحة البداية */
-.start-page {
-    background-color: #ffffff;
-    padding: 4vw;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-width: 700px;
-    width: 80vw;
-}
-
-.start-page h1 {
-    font-size: 3vw;
-    color: #3498db;
-    margin-bottom: 2vw;
-}
-
-.start-page input,
-.start-page select {
-    width: 100%;
-    padding: 1.5vw;
-    margin-bottom: 2vw;
-    font-size: 1.5vw;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-}
-
-.start-page button {
-    font-size: 1.8vw;
-    padding: 1.5vw 3vw;
-    background-color: #3498db;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.start-page button:hover {
-    background-color: #2980b9;
-}
-
 /* الصفحة الرئيسية */
 .container {
     background-color: #adadad;
@@ -60,46 +19,32 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     width: 95vw;
-    max-width: 1200px;
+    max-width: 1400px; /* الحد الأقصى للعرض للمحافظة على التناسق */
 }
 
-/* الرسالة المتحركة */
+/* تكبير حجم الرسالة قليلاً للشاشات الكبيرة */
 .message-container {
-    display: inline-block;
-    background-color: #e74c3c;
-    overflow: hidden;
-    border: 4px solid #3498db;
-    border-radius: 8px;
     padding: 2vw;
     margin-bottom: 3vw;
 }
 
 .animated-message {
-    font-size: 3vw;
+    font-size: 2.5vw;
     color: #f7faf7;
     white-space: nowrap;
     animation: slideRight 30s linear infinite;
 }
 
-@keyframes slideRight {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
-
 h2 {
-    font-size: 3vw;
+    font-size: 2.5vw;
     color: #e21919;
-    margin-bottom: 3vw;
+    margin-bottom: 2vw;
 }
 
-/* تنسيقات جدول المعلومات */
+/* تكبير حجم العناصر قليلاً في الشاشات الكبيرة */
 .info-table {
     width: 100%;
-    margin: 3vw 0;
+    margin: 2vw 0;
 }
 
 .info-row {
@@ -110,11 +55,11 @@ h2 {
 
 .info-box {
     flex: 1;
-    padding: 2.5vw;
+    padding: 2vw;
     background-color: #ecf0f1;
     border-radius: 8px;
     margin: 0 1vw;
-    font-size: 1.8vw;
+    font-size: 1.5vw; /* حجم أكبر قليلاً للخط */
     text-align: center;
 }
 
@@ -123,94 +68,46 @@ h2 {
     color: #fff;
 }
 
-.info-box span {
-    display: block;
-    font-weight: bold;
-    font-size: 1.8vw;
-}
-
-/* تنسيق التاريخ الهجري */
-.time-row {
-    font-size: 3vw;
-    padding: 2vw;
-    color: #2c3e50;
-    background-color: #f39c12;
-    border-radius: 10px;
-    margin-top: 2vw;
-    font-weight: bold;
-    text-align: center;
-    direction: rtl;
-}
-
-/* مربع الأيام المتبقية */
-.remaining-days {
-    display: inline-block;
-    background-color: #e74c3c;
-    color: #fff;
-    font-weight: bold;
-    padding: 1vw 2vw;
-    border-radius: 8px;
-    margin-top: 1vw;
-    direction: rtl;
-    font-size: 1.5vw;
-}
-
-/* تنسيقات الساعة الرقمية */
+/* تكبير حجم الساعة الرقمية قليلاً */
 .digital-clock {
-    font-size: 6vw;
+    font-size: 5vw;
     font-weight: bold;
     color: #2c3e50;
     margin-top: 3vw;
     background-color: #ecf0f1;
-    padding: 3vw 6vw;
+    padding: 2.5vw;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* تنسيقات كنترول */
+/* تكبير حجم الـ footer */
 .footer-control {
-    font-size: 2.5vw;
+    font-size: 2vw;
     color: #7f8c8d;
     margin-top: 2vw;
     font-weight: bold;
 }
 
-/* تنسيقات للأحجام الصغيرة */
-@media (max-width: 768px) {
-    .start-page h1, h2 {
-        font-size: 4vw;
+/* وسائط الإعلام للشاشات الكبيرة (65 بوصة فما فوق) */
+@media (min-width: 2560px) {
+    .container {
+        max-width: 1800px;
+        padding: 3vw;
     }
-    .info-box {
-        font-size: 2vw;
-        padding: 2vw;
+    h2 {
+        font-size: 3vw;
+    }
+    .animated-message {
+        font-size: 3vw;
     }
     .digital-clock {
-        font-size: 5vw;
-        padding: 2vw;
+        font-size: 7vw;
+        padding: 3vw;
     }
-    .remaining-days, .time-row {
+    .info-box {
         font-size: 2vw;
     }
     .footer-control {
-        font-size: 3vw;
-    }
-}
-
-@media (max-width: 480px) {
-    .info-row {
-        flex-direction: column;
-    }
-    .info-box {
-        margin: 2vw 0;
-    }
-    .digital-clock {
-        font-size: 4vw;
-    }
-    .message-container {
-        padding: 1vw;
-    }
-    .start-page input,
-    .start-page select {
-        font-size: 2vw;
+        font-size: 2.5vw;
     }
 }
