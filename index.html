@@ -1,217 +1,87 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>توزيع الطلاب</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            text-align: center;
-            background-color: #d0d0d0; /* خلفية رمادية */
-        }
-        #studentList {
-            margin: 0 auto 20px auto;
-            width: 60%;
-            height: 50px;
-            font-size: 16px;
-        }
-        .info {
-            margin-bottom: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        table {
-            margin: 0 auto;
-            border-collapse: collapse;
-            width: 80%;
-        }
-        th, td {
-            border: 1px solid #000;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .footer {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #333;
-        }
-    </style>
-    <!-- إضافة مكتبة dom-to-image -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <title>معلومات لجنة الاختبار</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<h1>توزيع الطلاب داخل الصف الدراسي</h1>
-
-<label for="classSelect">اختر الصف الدراسي:</label>
-<select id="classSelect">
-    <option value="أول متوسط">أول متوسط</option>
-    <option value="ثاني متوسط">ثاني متوسط</option>
-    <option value="ثالث متوسط">ثالث متوسط</option>
-</select>
-
-<br><br>
-<label for="classLeader">أدخل اسم رائد الفصل:</label>
-<input type="text" id="classLeader" placeholder="رائد الفصل">
-
-<br><br>
-<label for="columnCount">اختر عدد الأعمدة:</label>
-<select id="columnCount">
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-</select>
-
-<br><br>
-
-<textarea id="studentList" placeholder="أدخل أسماء الطلاب (كل اسم في سطر جديد)"></textarea><br>
-<button onclick="distributeStudents()">توزيع الطلاب</button>
-<button onclick="exportToExcel()">تصدير إلى Excel</button>
-<button onclick="printResults()">طباعة</button>
-<button onclick="saveAsImage()">حفظ كصورة</button>
-
-<!-- قسم عرض المعلومات -->
-<div id="resultContainer">
-    <div id="classInfo" class="info"></div>
-    <table id="result"></table>
-</div>
-<div class="footer">علي جبريل</div>
-
-<script>
-    let columnsData = [];
-
-    function distributeStudents() {
-        const input = document.getElementById('studentList').value.trim();
-        const students = input.split('\n').map(name => name.trim()).filter(name => name);
-
-        if (students.length === 0) {
-            alert('يرجى إدخال أسماء الطلاب قبل التوزيع.');
-            return;
-        }
-
-        const columnCount = parseInt(document.getElementById('columnCount').value);
-        const numStudents = students.length;
-
-        const shuffledStudents = students.sort(() => Math.random() - 0.5);
+    <!-- صفحة البداية لإدخال الرسالة واختيار البيانات -->
+    <div id="start-page" class="start-page">
+        <h1>أدخل المعلومات</h1>
+        <input type="text" id="customMessageInput" placeholder="أدخل الرسالة هنا..." />
         
-        columnsData = Array.from({ length: columnCount }, () => []);
-        shuffledStudents.forEach((student, index) => {
-            columnsData[index % columnCount].push(student);
-        });
+        <div class="dropdowns">
+            <label for="yearSelect">العام الدراسي:</label>
+            <select id="yearSelect">
+                <option value="1446">1446</option>
+                <option value="1447">1447</option>
+                <option value="1448">1448</option>
+            </select>
 
-        const classSelect = document.getElementById('classSelect').value;
-        const classLeader = document.getElementById('classLeader').value || 'غير محدد';
-        const resultTable = document.getElementById('result');
-        const classInfoDiv = document.getElementById('classInfo');
-        
-        // إضافة المعلومات (الصف، عدد الأعمدة، عدد الطلاب، رائد الفصل)
-        classInfoDiv.innerHTML = `
-            <p>الصف الدراسي: ${classSelect}</p>
-            <p>عدد الأعمدة: ${columnCount}</p>
-            <p>عدد الطلاب: ${numStudents}</p>
-            <p>رائد الفصل: ${classLeader}</p>
-        `;
+            <label for="semesterSelect">الفصل:</label>
+            <select id="semesterSelect">
+                <option value="الأول">الأول</option>
+                <option value="الثاني">الثاني</option>
+                <option value="الثالث">الثالث</option>
+            </select>
 
-        resultTable.innerHTML = ''; // مسح النتيجة القديمة
+            <label for="sessionSelect">الدور:</label>
+            <select id="sessionSelect">
+                <option value="الأول">الأول</option>
+                <option value="الثاني">الثاني</option>
+            </select>
 
-        // إنشاء رأس الجدول
-        const headerRow = document.createElement('tr');
-        for (let i = 1; i <= columnCount; i++) {
-            const th = document.createElement('th');
-            th.textContent = `العمود ${i}`;
-            headerRow.appendChild(th);
-        }
-        resultTable.appendChild(headerRow);
+            <label for="committeeSelect">اسم اللجنة:</label>
+            <select id="committeeSelect">
+                <option value="اللجنة الأولى">اللجنة الأولى</option>
+                <option value="اللجنة الثانية">اللجنة الثانية</option>
+            </select>
+        </div>
 
-        // إيجاد أقصى عدد من الطلاب في عمود واحد
-        const maxRows = Math.max(...columnsData.map(column => column.length));
-        
-        for (let rowIndex = 0; rowIndex < maxRows; rowIndex++) {
-            const row = document.createElement('tr');
-            for (let colIndex = 0; colIndex < columnCount; colIndex++) {
-                const cell = document.createElement('td');
-                if (columnsData[colIndex] && columnsData[colIndex][rowIndex]) {
-                    cell.textContent = columnsData[colIndex][rowIndex];
-                }
-                row.appendChild(cell);
-            }
-            resultTable.appendChild(row);
-        }
-    }
+        <button onclick="startApp()">إبدأ</button>
+    </div>
 
-    function exportToExcel() {
-        let csvContent = "data:text/csv;charset=utf-8,\uFEFF";
-        columnsData.forEach((column, index) => {
-            csvContent += `العمود ${index + 1},${column.join(',')}\n`;
-        });
-        const encodedUri = encodeURI(csvContent);
-        const link = document.createElement("a");
-        link.setAttribute("href", encodedUri);
-        link.setAttribute("download", "توزيع_الطلاب.csv");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
+    <!-- الصفحة الرئيسية لعرض المعلومات -->
+    <div id="main-page" class="container" style="display: none;">
+        <div class="message-container">
+            <!-- الرسالة الافتراضية -->
+            <h1 id="animatedMessage" class="animated-message">
+                تأكد من قرائتك لجميع الأسئلة والإجابة عليها | لاتتسرع في الإجابة | راجع إجاباتك | وفقكم الله وجعل الامتياز رفيقكم
+            </h1>
+        </div>
+        <h2>مجمع الثقافة التعليمي</h2>
 
-    function printResults() {
-        const printContent = document.getElementById('resultContainer').innerHTML;
-        const newWindow = window.open('', '', 'width=800,height=600');
-        newWindow.document.write(`
-            <html>
-                <head>
-                    <title>طباعة النتائج</title>
-                    <style>
-                        body { font-family: Arial; text-align: right; background-color: #d0d0d0; }
-                        table {
-                            margin: 0 auto;
-                            border-collapse: collapse;
-                            width: 80%;
-                        }
-                        th, td {
-                            border: 1px solid #000;
-                            padding: 8px;
-                            text-align: center;
-                        }
-                        th {
-                            background-color: #f2f2f2;
-                        }
-                        @media print {
-                            @page {
-                                size: landscape;
-                                margin: 10mm;
-                            }
-                        }
-                    </style>
-                </head>
-                <body onload="window.print();">
-                    ${printContent}
-                </body>
-            </html>
-        `);
-        newWindow.document.close();
-    }
+        <!-- جدول المعلومات -->
+        <div class="info-table">
+            <div class="info-row">
+                <div class="info-box highlight">العام الدراسي<br><span id="yearDisplay">1446</span></div>
+                <div class="info-box">الفصل<br><span id="semesterDisplay">الأول</span></div>
+                <div class="info-box highlight">الدور<br><span id="sessionDisplay">الأول</span></div>
+            </div>
+            <div class="info-row">
+                <div class="info-box highlight">اسم اللجنة<br><span id="committeeDisplay">اللجنة الأولى</span></div>
+                <div class="info-box">عدد الطلاب<br><span id="studentCount">١٠٣</span></div>
+                <div class="info-box highlight">اليوم<br><span id="dayName"></span></div>
+            </div>
+            <div class="info-row time-row">
+                <span id="hijriDate"></span>
+                <div id="remainingDaysContainer" class="remaining-days">
+                    الأيام المتبقية: <span id="remainingDays"></span>
+                </div>
+            </div>
+        </div>
 
-    function saveAsImage() {
-        const resultContainer = document.getElementById('resultContainer');
-        domtoimage.toPng(resultContainer, { quality: 0.95 }) // تحسين جودة الصورة
-            .then(function (dataUrl) {
-                const link = document.createElement('a');
-                link.href = dataUrl;
-                link.download = 'توزيع_الطلاب.png';
-                link.click();
-            })
-            .catch(function (error) {
-                console.error('حدث خطأ أثناء حفظ الصورة:', error);
-            });
-    }
-</script>
+        <!-- الساعة الرقمية -->
+        <div id="digital-clock" class="digital-clock">00:00:00</div>
 
+        <!-- كنترول 1446 -->
+        <div class="footer-control">
+            كنترول ١٤٤٦
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
