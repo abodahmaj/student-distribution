@@ -18,30 +18,30 @@ body {
     padding: 4vw;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    width: 95vw;
-    max-width: 1400px; /* الحد الأقصى للعرض للمحافظة على التناسق */
+    width: 100vw; /* تعديل العرض ليكون 100% من عرض الشاشة */
+    max-width: none; /* إلغاء الحد الأقصى للعرض لتجنب الفراغات */
 }
 
-/* تكبير حجم الرسالة قليلاً للشاشات الكبيرة */
+/* تكبير حجم الرسالة */
 .message-container {
     padding: 2vw;
     margin-bottom: 3vw;
 }
 
 .animated-message {
-    font-size: 2.5vw;
+    font-size: 4vw; /* تكبير حجم الخط للرسالة */
     color: #f7faf7;
     white-space: nowrap;
     animation: slideRight 30s linear infinite;
 }
 
 h2 {
-    font-size: 2.5vw;
+    font-size: 4vw; /* تكبير حجم الخط للعناوين */
     color: #e21919;
     margin-bottom: 2vw;
 }
 
-/* تكبير حجم العناصر قليلاً في الشاشات الكبيرة */
+/* تكبير حجم العناصر الأخرى */
 .info-table {
     width: 100%;
     margin: 2vw 0;
@@ -55,11 +55,11 @@ h2 {
 
 .info-box {
     flex: 1;
-    padding: 2vw;
+    padding: 2.5vw;
     background-color: #ecf0f1;
     border-radius: 8px;
     margin: 0 1vw;
-    font-size: 1.5vw; /* حجم أكبر قليلاً للخط */
+    font-size: 3vw; /* تكبير حجم الخط لمربعات المعلومات */
     text-align: center;
 }
 
@@ -68,46 +68,47 @@ h2 {
     color: #fff;
 }
 
-/* تكبير حجم الساعة الرقمية قليلاً */
+.info-box span {
+    display: block;
+    font-weight: bold;
+}
+
+/* تكبير حجم الساعة الرقمية */
 .digital-clock {
-    font-size: 5vw;
+    font-size: 8vw; /* تكبير حجم الخط للساعة الرقمية */
     font-weight: bold;
     color: #2c3e50;
     margin-top: 3vw;
     background-color: #ecf0f1;
-    padding: 2.5vw;
+    padding: 3vw;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* تكبير حجم الـ footer */
 .footer-control {
-    font-size: 2vw;
+    font-size: 3vw; /* تكبير حجم الخط في القسم السفلي */
     color: #7f8c8d;
     margin-top: 2vw;
     font-weight: bold;
 }
 
-/* وسائط الإعلام للشاشات الكبيرة (65 بوصة فما فوق) */
+/* تنسيق متجاوب للشاشات الكبيرة */
 @media (min-width: 2560px) {
-    .container {
-        max-width: 1800px;
-        padding: 3vw;
+    .animated-message {
+        font-size: 5vw;
     }
     h2 {
-        font-size: 3vw;
-    }
-    .animated-message {
-        font-size: 3vw;
-    }
-    .digital-clock {
-        font-size: 7vw;
-        padding: 3vw;
+        font-size: 5vw;
     }
     .info-box {
-        font-size: 2vw;
+        font-size: 4vw;
+    }
+    .digital-clock {
+        font-size: 10vw;
+        padding: 4vw;
     }
     .footer-control {
-        font-size: 2.5vw;
+        font-size: 4vw;
     }
 }
