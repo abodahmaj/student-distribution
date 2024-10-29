@@ -4,84 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>معلومات لجنة الاختبار</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- صفحة البداية لإدخال الرسالة واختيار البيانات -->
-    <div id="start-page" class="start-page">
-        <h1>أدخل المعلومات</h1>
-        <input type="text" id="customMessageInput" placeholder="أدخل الرسالة هنا..." />
-        
-        <div class="dropdowns">
-            <label for="yearSelect">العام الدراسي:</label>
-            <select id="yearSelect">
-                <option value="1446">1446</option>
-                <option value="1447">1447</option>
-                <option value="1448">1448</option>
-            </select>
-
-            <label for="semesterSelect">الفصل:</label>
-            <select id="semesterSelect">
-                <option value="الأول">الأول</option>
-                <option value="الثاني">الثاني</option>
-                <option value="الثالث">الثالث</option>
-            </select>
-
-            <label for="sessionSelect">الدور:</label>
-            <select id="sessionSelect">
-                <option value="الأول">الأول</option>
-                <option value="الثاني">الثاني</option>
-            </select>
-
-            <label for="committeeSelect">اسم اللجنة:</label>
-            <select id="committeeSelect">
-                <option value="اللجنة الأولى">اللجنة الأولى</option>
-                <option value="اللجنة الثانية">اللجنة الثانية</option>
-            </select>
-        </div>
-
-        <button onclick="startApp()">إبدأ</button>
-    </div>
-
-    <!-- الصفحة الرئيسية لعرض المعلومات -->
-    <div id="main-page" class="container" style="display: none;">
-        <div class="message-container">
-            <!-- الرسالة الافتراضية -->
-            <h1 id="animatedMessage" class="animated-message">
-                تأكد من قرائتك لجميع الأسئلة والإجابة عليها | لاتتسرع في الإجابة | راجع إجاباتك | وفقكم الله وجعل الامتياز رفيقكم
-            </h1>
-        </div>
-        <h2>مجمع الثقافة التعليمي</h2>
-
-        <!-- جدول المعلومات -->
-        <div class="info-table">
-            <div class="info-row">
-                <div class="info-box highlight">العام الدراسي<br><span id="yearDisplay">1446</span></div>
-                <div class="info-box">الفصل<br><span id="semesterDisplay">الأول</span></div>
-                <div class="info-box highlight">الدور<br><span id="sessionDisplay">الأول</span></div>
-            </div>
-            <div class="info-row">
-                <div class="info-box highlight">اسم اللجنة<br><span id="committeeDisplay">اللجنة الأولى</span></div>
-                <div class="info-box">عدد الطلاب<br><span id="studentCount">١٠٣</span></div>
-                <div class="info-box highlight">اليوم<br><span id="dayName"></span></div>
-            </div>
-            <div class="info-row time-row">
-                <span id="hijriDate"></span>
-                <div id="remainingDaysContainer" class="remaining-days">
-                    الأيام المتبقية: <span id="remainingDays"></span>
+    <div class="container">
+        <!-- الرسالة المتحركة -->
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-primary text-center animated-message" role="alert">
+                    تأكد من قرائتك لجميع الأسئلة والإجابة عليها | لاتتسرع في الإجابة | راجع إجاباتك | وفقكم الله وجعل الامتياز رفيقكم
                 </div>
             </div>
         </div>
 
-        <!-- الساعة الرقمية -->
-        <div id="digital-clock" class="digital-clock">00:00:00</div>
+        <!-- جدول المعلومات -->
+        <div class="row text-center mt-4">
+            <div class="col-md-3 col-6 mb-3">
+                <div class="info-box">العام الدراسي<br><span id="yearDisplay">1446</span></div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="info-box">الفصل<br><span id="semesterDisplay">الأول</span></div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="info-box">الدور<br><span id="sessionDisplay">الأول</span></div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="info-box">اسم اللجنة<br><span id="committeeDisplay">اللجنة الأولى</span></div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="info-box">عدد الطلاب<br><span id="studentCount">١٠٣</span></div>
+            </div>
+            <div class="col-md-3 col-6 mb-3">
+                <div class="info-box">اليوم<br><span id="dayName">الأربعاء</span></div>
+            </div>
+        </div>
 
-        <!-- كنترول 1446 -->
-        <div class="footer-control">
-            كنترول ١٤٤٦
+        <!-- الساعة الرقمية -->
+        <div class="row">
+            <div class="col-12">
+                <div id="digital-clock" class="digital-clock">00:00:00</div>
+            </div>
+        </div>
+
+        <!-- القسم السفلي -->
+        <div class="row">
+            <div class="col-12 text-center mt-3">
+                <div class="footer-control">كنترول ١٤٤٦</div>
+            </div>
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
